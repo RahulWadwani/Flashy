@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Flashy - Your News at a Glance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="top-bar">
+        <h1 id="site-title">⚡ Flashy</h1>
+    </header>
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="dark-mode-toggle-container">
+        <button id="toggle-dark-mode" class="dark-mode-btn">🌙 Dark Mode</button>
+    </div>
+
+    <!-- Category Buttons -->
+    <div class="nav-buttons">
+        <a href="/">Home</a>
+        <a href="/?category=business">Business</a>
+        <a href="/?category=technology">Technology</a>
+        <a href="/?category=sports">Sports</a>
+        <a href="/?category=entertainment">Entertainment</a>
+        <a href="/?category=health">Health</a>
+        <a href="/?category=science">Science</a>
+    </div>
+
+    <!-- Search Box -->
+    <div class="search-box">
+        <form method="GET" class="search-form">
+            <input type="text" name="query" placeholder="Search news..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- News Tiles Layout -->
+    <div class="tiles-container">
+        {% for article in articles %}
+            {% if article.urlToImage %}
+                <a href="{{ article.url }}" target="_blank" class="tile-link">
+                    <div class="tile">
+                        <img src="{{ article.urlToImage }}" alt="News Image">
+                        <h2>{{ article.title }}</h2>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Link to External JavaScript File -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
