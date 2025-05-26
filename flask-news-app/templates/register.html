@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Flashy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        input:focus {
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+        }
+        button {
+            position: relative;
+            overflow: hidden;
+        }
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        .password-toggle {
+            cursor: pointer;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="glassmorphism p-8 rounded-xl shadow-2xl w-full max-w-md">
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-gray-900">Flashy</h1>
+            <h2 class="text-2xl font-semibold text-gray-900 mt-2">Join the News Community</h2>
+        </div>
+        <form method="POST" class="space-y-5">
+            <div>
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Email Address" 
+                    required 
+                    class="w-full px-4 py-3 bg-white/10 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
+                    aria-label="Email Address"
+                >
+            </div>
+            <div>
+                <input 
+                    type="text" 
+                    name="username" 
+                    placeholder="Username" 
+                    required 
+                    class="w-full px-4 py-3 bg-white/10 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
+                    aria-label="Username"
+                >
+            </div>
+            <div class="relative">
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="Password" 
+                    required 
+                    class="w-full px-4 py-3 bg-white/10 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
+                    aria-label="Password"
+                >
+                <i class="fas fa-eye password-toggle" onclick="togglePassword()"></i>
+            </div>
+            <div class="flex items-center">
+                <input 
+                    type="checkbox" 
+                    name="newsletter" 
+                    id="newsletter" 
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 rounded"
+                >
+                <label for="newsletter" class="ml-2 text-sm text-gray-700">
+                    Subscribe to Flashy updates
+                </label>
+            </div>
+            <button 
+                type="submit" 
+                class="w-full bg-blue-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-900 transition-all duration-300"
+            >
+                Register
+            </button>
+        </form>
+        <p class="text-center text-gray-700 mt-5 text-sm">
+            Already have an account? 
+            <a href="{{ url_for('login') }}" class="text-blue-600 font-medium hover:underline">Login</a>
+        </p>
+        <p class="text-center text-gray-600 mt-3 text-xs">
+            By registering, you agree to our 
+            <a href="/terms" class="text-blue-600 hover:underline">Terms</a> and 
+            <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.
+        </p>
+    </div>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
