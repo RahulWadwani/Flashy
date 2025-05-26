@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - NewsHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        h2 {
+            scroll-margin-top: 2rem;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-gray-800">
+    <div class="glassmorphism p-8 rounded-xl shadow-2xl w-full max-w-4xl mx-4">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">NewsHub</h1>
+            <h2 class="text-3xl font-semibold text-gray-900 mt-2">Terms and Conditions</h2>
+        </div>
+        <div class="space-y-6 text-gray-700">
+            <p class="text-base">Welcome to NewsHub! By accessing or using our website and services, you agree to be bound by these Terms and Conditions. Please read them carefully before using our platform.</p>
+            
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">1. Acceptance of Terms</h3>
+                <p>By creating an account or using NewsHub, you confirm that you are at least 13 years old and agree to comply with these Terms and our <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>. If you do not agree, you may not use our services.</p>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2. User Responsibilities</h3>
+                <p>You agree to:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Use NewsHub for lawful purposes only.</li>
+                    <li>Not engage in activities that disrupt or harm the platform, such as hacking, spamming, or posting harmful content.</li>
+                    <li>Not misuse or reproduce content without permission.</li>
+                    <li>Provide accurate information during registration.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3. Content Usage</h3>
+                <p>NewsHub provides news content sourced from third-party APIs, provided "as is" without warranties of accuracy or completeness. You may:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>View and share content for personal, non-commercial use.</li>
+                    <li>Not reproduce, distribute, or modify content without explicit permission from NewsHub or the content owner.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">4. Account Termination</h3>
+                <p>We reserve the right to suspend or terminate your account if you:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Violate these Terms or our community guidelines.</li>
+                    <li>Engage in fraudulent or harmful activities.</li>
+                    <li>NewsHub may also terminate accounts for inactivity or at our discretion with prior notice.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">5. Limitation of Liability</h3>
+                <p>NewsHub is not liable for:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Inaccuracies or errors in third-party content.</li>
+                    <li>Damages arising from your use of the platform.</li>
+                    <li>Service interruptions due to technical issues or maintenance.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">6. Governing Law</h3>
+                <p>These Terms are governed by the laws of the State of North Carolina, USA. Any disputes will be resolved in the courts of News City, NC.</p>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">7. Changes to Terms</h3>
+                <p>We may update these Terms at any time. Changes will be posted on this page, and continued use of NewsHub constitutes acceptance of the updated Terms.</p>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">8. Contact Us</h3>
+                <p>For questions about these Terms, please contact us at:</p>
+                <ul class="list-none space-y-2 ml-4">
+                    <li><strong>Email</strong>: support@newshub.com</li>
+                    <li><strong>Address</strong>: NewsHub, 123 Media Lane, News City, NC 12345</li>
+                </ul>
+            </section>
+
+            <p class="mt-6 text-sm text-gray-600">Last updated: May 26, 2025</p>
+            <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline mt-6 inline-block font-medium" aria-label="Back to Login">← Back to Login</a>
+        </div>
+    </div>
+</body>
+</html>

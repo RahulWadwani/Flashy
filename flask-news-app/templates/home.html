@@ -3,54 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Flashy - Your News at a Glance</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Flashy - Your News at a Glance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-14973662105479-7d3f73bd6697?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-color 0.3s ease;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark-mode {
+            background: rgba(17, 24, 39, 0.95);
+        }
+        .dark-mode .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark-mode .text-gray-900 {
+            color: #e5e7eb;
+        }
+        .dark-mode .text-gray-700 {
+            color: #d1d5db;
+        }
+        .dark-mode .text-gray-600 {
+            color: #9ca3af;
+        }
+        .dark-mode .bg-blue-800 {
+            background-color: #1e3a8a;
+        }
+        .dark-mode .hover\:bg-blue-900:hover {
+            background-color: #1e40af;
+        }
+        .tile {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .tile:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen text-gray-800 transition-colors duration-300">
     <!-- Sticky Header -->
-    <header class="top-bar">
-        <h1 id="site-title">⚡ Flashy</h1>
+    <header class="glassmorphism sticky top-0 z-10 p-4 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-gray-900">Flashy</h1>
+            <button id="toggle-dark-mode" class="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-all" aria-label="Toggle Dark Mode">
+                <span class="dark-mode-icon">🌙 Dark Mode</span>
+            </button>
+        </div>
     </header>
 
-    <!-- Dark Mode Toggle Button -->
-    <div class="dark-mode-toggle-container">
-        <button id="toggle-dark-mode" class="dark-mode-btn">🌙 Dark Mode</button>
-    </div>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Category Buttons -->
+        <nav class="glassmorphism p-4 rounded-lg mb-6 flex flex-wrap gap-4 justify-center">
+            <a href="/" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Home">Home</a>
+            <a href="/?category=business" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Business News">Business</a>
+            <a href="/?category=technology" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Technology News">Technology</a>
+            <a href="/?category=sports" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Sports News">Sports</a>
+            <a href="/?category=entertainment" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Entertainment News">Entertainment</a>
+            <a href="/?category=health" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Health News">Health</a>
+            <a href="/?category=science" class="text-gray-900 hover:bg-blue-800 hover:text-white px-4 py-2 rounded-md transition-all" aria-label="Science News">Science</a>
+        </nav>
 
-    <!-- Category Buttons -->
-    <div class="nav-buttons">
-        <a href="/">Home</a>
-        <a href="/?category=business">Business</a>
-        <a href="/?category=technology">Technology</a>
-        <a href="/?category=sports">Sports</a>
-        <a href="/?category=entertainment">Entertainment</a>
-        <a href="/?category=health">Health</a>
-        <a href="/?category=science">Science</a>
-    </div>
+        <!-- Search Box -->
+        <div class="glassmorphism p-4 rounded-lg mb-8">
+            <form method="GET" class="flex gap-2 max-w-md mx-auto">
+                <input 
+                    type="text" 
+                    name="query" 
+                    placeholder="Search news..." 
+                    required 
+                    class="w-full px-4 py-2 bg-white/10 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
+                    aria-label="Search news"
+                >
+                <button 
+                    type="submit" 
+                    class="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-all"
+                    aria-label="Submit search"
+                >
+                    Search
+                </button>
+            </form>
+        </div>
 
-    <!-- Search Box -->
-    <div class="search-box">
-        <form method="GET" class="search-form">
-            <input type="text" name="query" placeholder="Search news..." required>
-            <button type="submit">Search</button>
-        </form>
-    </div>
+        <!-- News Tiles Layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for article in articles %}
+                {% if article.urlToImage %}
+                    <a href="{{ article.url }}" target="_blank" class="tile-link" aria-label="Read article: {{ article.title }}">
+                        <div class="tile glassmorphism rounded-lg overflow-hidden">
+                            <img src="{{ article.urlToImage }}" alt="News Image: {{ article.title }}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h2 class="text-lg font-semibold text-gray-900 line-clamp-2">{{ article.title }}</h2>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </main>
 
-    <!-- News Tiles Layout -->
-    <div class="tiles-container">
-        {% for article in articles %}
-            {% if article.urlToImage %}
-                <a href="{{ article.url }}" target="_blank" class="tile-link">
-                    <div class="tile">
-                        <img src="{{ article.urlToImage }}" alt="News Image">
-                        <h2>{{ article.title }}</h2>
-                    </div>
-                </a>
-            {% endif %}
-        {% endfor %}
-    </div>
+    <!-- JavaScript for Dark Mode Toggle -->
+    <script>
+        const toggleButton = document.getElementById('toggle-dark-mode');
+        const body = document.body;
+        const darkModeIcon = document.querySelector('.dark-mode-icon');
 
-    <!-- Link to External JavaScript File -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeIcon.textContent = '☀️ Light Mode';
+        }
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                darkModeIcon.textContent = '☀️ Light Mode';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeIcon.textContent = '🌙 Dark Mode';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    </script>
 </body>
 </html>

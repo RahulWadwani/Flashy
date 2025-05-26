@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - NewsHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        h2 {
+            scroll-margin-top: 2rem;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-gray-800">
+    <div class="glassmorphism p-8 rounded-xl shadow-2xl w-full max-w-4xl mx-4">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">NewsHub</h1>
+            <h2 class="text-3xl font-semibold text-gray-900 mt-2">Privacy Policy</h2>
+        </div>
+        <div class="space-y-6 text-gray-700">
+            <p class="text-base">At NewsHub, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your personal information when you use our services. By using NewsHub, you agree to the practices described below.</p>
+            
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">1. Information We Collect</h3>
+                <p>We collect only the information necessary to provide our services:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Account Information</strong>: Username, email address, and hashed password provided during registration.</li>
+                    <li><strong>Usage Data</strong>: Anonymous data about how you interact with NewsHub, such as viewed articles or search queries, to improve our services.</li>
+                    <li><strong>Device Information</strong>: Basic technical details (e.g., browser type, IP address) for security and performance purposes.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2. How We Use Your Information</h3>
+                <p>Your information is used to:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Manage your account and authenticate your login.</li>
+                    <li>Personalize your news feed based on your interests (optional).</li>
+                    <li>Send newsletters or updates if you opt in during registration.</li>
+                    <li>Analyze usage patterns to enhance our platform’s functionality.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3. Data Security</h3>
+                <p>We take your data security seriously:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Passwords are hashed using industry-standard encryption.</li>
+                    <li>Data is stored on secure servers with restricted access.</li>
+                    <li>We use HTTPS to encrypt data transmitted between your device and our servers.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">4. Cookies and Tracking</h3>
+                <p>We may use cookies to:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Keep you logged in during your session.</li>
+                    <li>Track anonymous analytics to improve user experience.</li>
+                    <li>You can disable cookies in your browser settings, but this may affect functionality.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">5. Third-Party Services</h3>
+                <p>We do not sell or share your personal data with third parties for advertising. We may use third-party services for:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Analytics (e.g., anonymous usage statistics).</li>
+                    <li>Payment processing (if applicable, with secure providers).</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">6. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Access or request a copy of your personal data.</li>
+                    <li>Update or correct your account information.</li>
+                    <li>Delete your account by contacting support.</li>
+                    <li>Opt out of newsletters at any time via the unsubscribe link.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">7. Contact Us</h3>
+                <p>If you have questions about this Privacy Policy or your data, please contact us at:</p>
+                <ul class="list-none space-y-2 ml-4">
+                    <li><strong>Email</strong>: support@newshub.com</li>
+                    <li><strong>Address</strong>: NewsHub, 123 Media Lane, News City, NC 12345</li>
+                </ul>
+            </section>
+
+            <p class="mt-6 text-sm text-gray-600">Last updated: May 26, 2025</p>
+            <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline mt-6 inline-block font-medium" aria-label="Back to Login">← Back to Login</a>
+        </div>
+    </div>
+</body>
+</html>
